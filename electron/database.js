@@ -287,18 +287,6 @@ const updateProject = (id, p) => {
 const deleteProject = (id) => db.prepare('DELETE FROM projects WHERE id = ?').run(id);
 const getMortgageRates = () => db.prepare('SELECT * FROM mortgage_rates ORDER BY region, duration').all();
 
-module.exports = {
-  getSettings, setSetting,
-  getCategories, addCategory, deleteCategory,
-  getBudgetPlanning, setBudgetAmount, saveBudgetPlan,
-  getTransactions, addTransaction, updateTransaction, deleteTransaction,
-  getTransactionSummary, getMonthlyTotals,
-  getWalletAccounts, addWalletAccount, deleteWalletAccount,
-  getWalletPositions, setWalletPosition, getWalletEvolution,
-  getProjects, addProject, updateProject, deleteProject, getMortgageRates,
-  getProExpenses, addProExpense, updateProExpense, deleteProExpense, reimburseProExpense, getProExpenseSummary,
-};
-
 // ─── Pro Expenses API ─────────────────────────────────────────────────────────
 
 const getProExpenses = ({ year, month, status } = {}) => {
@@ -347,4 +335,15 @@ const getProExpenseSummary = () => {
     SELECT status, COUNT(*) as count, SUM(amount) as total
     FROM pro_expenses GROUP BY status
   `).all();
+};
+module.exports = {
+  getSettings, setSetting,
+  getCategories, addCategory, deleteCategory,
+  getBudgetPlanning, setBudgetAmount, saveBudgetPlan,
+  getTransactions, addTransaction, updateTransaction, deleteTransaction,
+  getTransactionSummary, getMonthlyTotals,
+  getWalletAccounts, addWalletAccount, deleteWalletAccount,
+  getWalletPositions, setWalletPosition, getWalletEvolution,
+  getProjects, addProject, updateProject, deleteProject, getMortgageRates,
+  getProExpenses, addProExpense, updateProExpense, deleteProExpense, reimburseProExpense, getProExpenseSummary,
 };
