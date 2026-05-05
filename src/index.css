@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Dark theme (default) ─────────────────────────────────── */
+:root, [data-theme="dark"] {
+  --c-bg:        #0D1117;
+  --c-surface:   #161B22;
+  --c-surface2:  #21262D;
+  --c-border:    #30363D;
+  --c-border2:   #484F58;
+  --c-text:      #E6EDF3;
+  --c-muted:     #8B949E;
+  --c-accent:    #58A6FF;
+  --c-green:     #3FB950;
+  --c-red:       #F85149;
+  --c-orange:    #D29922;
+  --c-purple:    #BC8CFF;
+  --c-scrollbar: #30363D;
+}
+
+/* ── Light theme ──────────────────────────────────────────── */
+[data-theme="light"] {
+  --c-bg:        #F6F8FA;
+  --c-surface:   #FFFFFF;
+  --c-surface2:  #EAEEF2;
+  --c-border:    #D0D7DE;
+  --c-border2:   #A8B1BA;
+  --c-text:      #1F2328;
+  --c-muted:     #57606A;
+  --c-accent:    #0969DA;
+  --c-green:     #1A7F37;
+  --c-red:       #CF222E;
+  --c-orange:    #9A6700;
+  --c-purple:    #8250DF;
+  --c-scrollbar: #D0D7DE;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* ── Scrollbars ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-scrollbar); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--c-border2); }
+
+/* ── Electron titlebar drag ───────────────────────────────── */
+.titlebar-drag    { -webkit-app-region: drag; }
+.titlebar-no-drag { -webkit-app-region: no-drag; }
+
+/* ── Inputs ───────────────────────────────────────────────── */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+/* ── Utility overrides (CSS var-based) ────────────────────── */
+.t-bg        { background-color: var(--c-bg)      !important; }
+.t-surface   { background-color: var(--c-surface)  !important; }
+.t-surface2  { background-color: var(--c-surface2) !important; }
+.t-border    { border-color:     var(--c-border)   !important; }
+.t-text      { color: var(--c-text)   !important; }
+.t-muted     { color: var(--c-muted)  !important; }
+.t-accent    { color: var(--c-accent) !important; }
+.t-green     { color: var(--c-green)  !important; }
+.t-red       { color: var(--c-red)    !important; }
+.t-orange    { color: var(--c-orange) !important; }
+.t-purple    { color: var(--c-purple) !important; }
+
+/* Tooltip theming for recharts */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: var(--c-surface2) !important;
+  border-color: var(--c-border) !important;
+  color: var(--c-text) !important;
+}
