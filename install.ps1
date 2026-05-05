@@ -1,7 +1,6 @@
 # ─────────────────────────────────────────────────────────────
-#  Budget Manager — Installation Windows
-#  Depuis le dossier du projet :
-#  powershell -ExecutionPolicy Bypass -File install.ps1
+#  Budget Manager - Installateur Windows
+#  Usage : powershell -ExecutionPolicy Bypass -File install.ps1
 # ─────────────────────────────────────────────────────────────
 
 function Ok   { param($t) Write-Host "  v $t" -ForegroundColor Green }
@@ -14,34 +13,31 @@ Write-Host "  Budget Manager -- Installation" -ForegroundColor White
 Write-Host "  --------------------------------" -ForegroundColor DarkGray
 Write-Host ""
 
-# Verifier qu'on est dans le bon dossier
 if (-not (Test-Path "package.json")) {
-    Err "Lance ce script depuis la racine du projet (la ou se trouve package.json)."
+    Err "Lance ce script depuis la racine du projet."
 }
 
-# Node.js
 Info "Verification de Node.js..."
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
-    Err "Node.js n'est pas installe. Installe-le depuis https://nodejs.org (version 18+) puis relance ce script."
+    Err "Node.js non installe. Va sur https://nodejs.org (version 18+) puis relance ce script."
 }
 $v = (node --version) -replace "v",""
 $major = [int]($v.Split(".")[0])
-if ($major -lt 18) { Err "Node.js $v detecte — version 18+ requise. Mets a jour depuis https://nodejs.org" }
+if ($major -lt 18) {
+    Err "Node.js $v detecte, version 18+ requise. Mets a jour depuis https://nodejs.org"
+}
 Ok "Node.js $v"
 
-# npm install
-Info "Installation des dependances npm..."
+Info "Installation des dependances..."
 npm install
 if ($LASTEXITCODE -ne 0) { Err "Echec de npm install." }
 Ok "Dependances installees."
 
-# Build Windows
 Info "Build de l'application Windows..."
 npm run dist:win
 if ($LASTEXITCODE -ne 0) { Err "Echec du build." }
 Ok "Build termine."
 
-# Trouver l'exe
 $setup = Get-ChildItem "dist-electron" -Filter "*Setup*.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
 $exe   = Get-ChildItem "dist-electron" -Filter "*.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
 $target = if ($setup) { $setup.FullName } else { $exe.FullName }
