@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "build": "vite build",
+    "test": "vitest run",
     "dist:win": "vite build && electron-builder --win",
     "dist:linux": "vite build && electron-builder --linux",
     "dist:all": "vite build && electron-builder --win --linux"
@@ -26,6 +27,7 @@
     "recharts": "^2.12.2",
     "tailwindcss": "^3.4.1",
     "vite": "^5.1.6",
+    "vitest": "^1.6.0",
     "wait-on": "^7.2.0"
   },
   "build": {
