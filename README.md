@@ -1,42 +1,42 @@
-# 💰 Budget Manager
+﻿# ðŸ’° Budget Manager
 
-Application de gestion budgétaire personnelle, cross-platform Windows & Linux.
+Application de gestion budgÃ©taire personnelle, cross-platform Windows & Linux.
 
-Construite avec Electron, React 18, Tailwind CSS et SQLite — 100% locale, aucune donnée envoyée en ligne.
+Construite avec Electron, React 18, Tailwind CSS et SQLite â€” 100% locale, aucune donnÃ©e envoyÃ©e en ligne.
 
 ---
 
-## Fonctionnalités
+## FonctionnalitÃ©s
 
 | Module | Description |
 |---|---|
-| 📊 **Dashboard** | KPIs mensuels, budget vs réel, répartition par catégorie, tendance annuelle |
-| 🗓️ **Calendrier** | Vue annuelle 12 mois avec soldes et activité par mois |
-| 📅 **Budget Planning** | Matrice éditable catégories × 12 mois |
-| 📋 **Transactions** | CRUD complet, filtres par type, onglet dépenses pro |
-| 💼 **Dépenses pro** | Frais avancés avec statut remboursement, exclus du budget courant |
-| 💼 **Patrimoine** | Suivi mensuel des comptes + courbe d'évolution |
-| 🏠 **Projets immobiliers** | Simulateur de crédit, taux par région, calculateur d'apport |
-| ⚙️ **Paramètres** | Catégories personnalisées, année de démarrage |
-| 📥 **Import Excel** | Import automatique depuis .xlsx / .xls / .csv |
-| 📤 **Export Excel** | Export 4 feuilles : Résumé, Transactions, Planning, Patrimoine |
-| 🌗 **Thème** | Mode clair et mode sombre |
+| ðŸ“Š **Dashboard** | KPIs mensuels, budget vs rÃ©el, rÃ©partition par catÃ©gorie, tendance annuelle |
+| ðŸ—“ï¸ **Calendrier** | Vue annuelle 12 mois avec soldes et activitÃ© par mois |
+| ðŸ“… **Budget Planning** | Matrice Ã©ditable catÃ©gories Ã— 12 mois |
+| ðŸ“‹ **Transactions** | CRUD complet, filtres par type, onglet dÃ©penses pro |
+| ðŸ’¼ **DÃ©penses pro** | Frais avancÃ©s avec statut remboursement, exclus du budget courant |
+| ðŸ’¼ **Patrimoine** | Suivi mensuel des comptes + courbe d'Ã©volution |
+| ðŸ  **Projets immobiliers** | Simulateur de crÃ©dit, taux par rÃ©gion, calculateur d'apport |
+| âš™ï¸ **ParamÃ¨tres** | CatÃ©gories personnalisÃ©es, annÃ©e de dÃ©marrage |
+| ðŸ“¥ **Import Excel** | Import automatique depuis .xlsx / .xls / .csv |
+| ðŸ“¤ **Export Excel** | Export 4 feuilles : RÃ©sumÃ©, Transactions, Planning, Patrimoine |
+| ðŸŒ— **ThÃ¨me** | Mode clair et mode sombre |
 
 ---
 
 ## Stack technique
 
-- **Frontend** — React 18, Tailwind CSS, Recharts
-- **Desktop** — Electron 29
-- **Base de données** — SQLite via `better-sqlite3` (stockage local)
-- **Build** — Vite 5, electron-builder
-- **Export/Import** — ExcelJS
+- **Frontend** â€” React 18, Tailwind CSS, Recharts
+- **Desktop** â€” Electron 29
+- **Base de donnÃ©es** â€” SQLite via `better-sqlite3` (stockage local)
+- **Build** â€” Vite 5, electron-builder
+- **Export/Import** â€” ExcelJS
 
 ---
 
-## Prérequis
+## PrÃ©requis
 
-- Node.js 18 ou supérieur
+- Node.js 18 ou supÃ©rieur
 - npm 9+
 
 ---
@@ -44,30 +44,30 @@ Construite avec Electron, React 18, Tailwind CSS et SQLite — 100% locale, aucu
 ## Installation
 
 ```bash
-git clone https://github.com/TON_USERNAME/budget-manager.git
+git clone https://github.com/J0ELAMENACE/Budget-Manager.git
 cd budget-manager
 npm install
 ```
 
 ---
 
-## Développement
+## DÃ©veloppement
 
 ```bash
 npm run dev
 ```
 
-Lance Vite (port 5173) et Electron en parallèle avec hot-reload.
+Lance Vite (port 5173) et Electron en parallÃ¨le avec hot-reload.
 
 ---
 
 ## Build
 
 ```bash
-# Windows — génère un installeur .exe (NSIS)
+# Windows â€” gÃ©nÃ¨re un installeur .exe (NSIS)
 npm run dist:win
 
-# Linux — génère une AppImage
+# Linux â€” gÃ©nÃ¨re une AppImage
 npm run dist:linux
 
 # Les deux en une commande
@@ -78,16 +78,16 @@ Les fichiers de sortie sont dans `dist-electron/`.
 
 ---
 
-## Données
+## DonnÃ©es
 
-Les données sont stockées localement dans la base SQLite suivante :
+Les donnÃ©es sont stockÃ©es localement dans la base SQLite suivante :
 
-| Système | Chemin |
+| SystÃ¨me | Chemin |
 |---|---|
 | Windows | `%APPDATA%\BudgetManager\budget.db` |
 | Linux | `~/.config/BudgetManager/budget.db` |
 
-Aucune donnée n'est envoyée à un serveur externe.
+Aucune donnÃ©e n'est envoyÃ©e Ã  un serveur externe.
 
 ---
 
@@ -95,35 +95,35 @@ Aucune donnée n'est envoyée à un serveur externe.
 
 ```
 budget-manager/
-├── electron/
-│   ├── main.js          # Main process Electron + IPC handlers
-│   ├── preload.js       # Bridge contextIsolation → renderer
-│   ├── database.js      # API SQLite (better-sqlite3)
-│   ├── export.js        # Export Excel (ExcelJS)
-│   └── importer.js      # Import Excel/CSV
-├── src/
-│   ├── App.jsx           # Layout principal + routing
-│   ├── context/
-│   │   └── ThemeContext.jsx
-│   ├── components/
-│   │   └── ThreeDotMenu.jsx
-│   └── views/
-│       ├── Dashboard.jsx
-│       ├── CalendarView.jsx
-│       ├── BudgetPlanning.jsx
-│       ├── BudgetTracking.jsx
-│       ├── ProExpenses.jsx
-│       ├── Wallet.jsx
-│       ├── Projects.jsx
-│       └── Settings.jsx
-├── index.html
-├── vite.config.js
-├── tailwind.config.js
-└── package.json
+â”œâ”€â”€ electron/
+â”‚   â”œâ”€â”€ main.js          # Main process Electron + IPC handlers
+â”‚   â”œâ”€â”€ preload.js       # Bridge contextIsolation â†’ renderer
+â”‚   â”œâ”€â”€ database.js      # API SQLite (better-sqlite3)
+â”‚   â”œâ”€â”€ export.js        # Export Excel (ExcelJS)
+â”‚   â””â”€â”€ importer.js      # Import Excel/CSV
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ App.jsx           # Layout principal + routing
+â”‚   â”œâ”€â”€ context/
+â”‚   â”‚   â””â”€â”€ ThemeContext.jsx
+â”‚   â”œâ”€â”€ components/
+â”‚   â”‚   â””â”€â”€ ThreeDotMenu.jsx
+â”‚   â””â”€â”€ views/
+â”‚       â”œâ”€â”€ Dashboard.jsx
+â”‚       â”œâ”€â”€ CalendarView.jsx
+â”‚       â”œâ”€â”€ BudgetPlanning.jsx
+â”‚       â”œâ”€â”€ BudgetTracking.jsx
+â”‚       â”œâ”€â”€ ProExpenses.jsx
+â”‚       â”œâ”€â”€ Wallet.jsx
+â”‚       â”œâ”€â”€ Projects.jsx
+â”‚       â””â”€â”€ Settings.jsx
+â”œâ”€â”€ index.html
+â”œâ”€â”€ vite.config.js
+â”œâ”€â”€ tailwind.config.js
+â””â”€â”€ package.json
 ```
 
 ---
 
 ## Licence
 
-Propriétaire — voir [LICENSE](./LICENSE).
+PropriÃ©taire â€” voir [LICENSE](./LICENSE).
